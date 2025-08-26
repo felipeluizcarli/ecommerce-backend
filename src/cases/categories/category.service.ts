@@ -1,21 +1,23 @@
-import { Repository } from 'typeorm';
-import { Category } from './category.entity';
-import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
+
+import { Repository } from "typeorm";
+import { Category } from "./category.entity";
+import { InjectRepository } from "@nestjs/typeorm";
+import { Injectable } from "@nestjs/common";
 
 @Injectable()
 export class CategoryService {
+
   constructor(
     @InjectRepository(Category)
-    private repository: Repository<Category>,
+    private repository: Repository<Category>
   ) {}
 
   findAll(): Promise<Category[]> {
     return this.repository.find();
   }
 
-  findById(Id: string): Promise<Category> {
-    return this.repository.findOneBy({ id: Id });
+  findById(id: string): Promise<Category | null> {
+    return this.repository.findOneBy({id: id});
   }
 
   save(category: Category): Promise<Category> {

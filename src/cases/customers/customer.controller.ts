@@ -1,7 +1,6 @@
-import { Body, Controller, Delete, Get, HttpCode, HttpException, HttpStatus, Param, ParseUUIDPipe, Post, Put, Query } from "@nestjs/common";
-import { Product } from "./product.entity";
-import { ProductService } from "./product.service";
-import { Category } from "../categories/category.entity";
+import { Body, Controller, Delete, Get, HttpCode, HttpException, HttpStatus, Param, ParseUUIDPipe, Post, Put } from "@nestjs/common";
+import { Product } from "./customer.entity";
+import { ProductService } from "./customer.service";
 
 @Controller('products')
 export class ProductController {
@@ -9,7 +8,7 @@ export class ProductController {
   constructor(private readonly service: ProductService) {}
 
   @Get()
-  findAll(@Query('category') ParseUUIDPipe) categoryId: string): Promise<Product[]> {
+  findAll(): Promise<Product[]> {
     return this.service.findAll();
   }
 

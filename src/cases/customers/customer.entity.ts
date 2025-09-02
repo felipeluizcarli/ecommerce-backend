@@ -2,8 +2,8 @@ import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Brand } from "../brands/brand.entity";
 import { Category } from "../categories/category.entity";
 
-@Entity('product')
-export class Product {
+@Entity('customers')
+export class Customer {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
